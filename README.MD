@@ -24,7 +24,7 @@ Este comando vai criar uma pasta mysql_data no diretório onde você estiver rod
 ### 2.3 - Crie a estrutura das tabelas e carregue os dados iniciais
 Execute o comando abaixo para carregar o script SQL que cria a estrtura das tabelas e faZ a carga inicial de dados
 ```
-docker cp banco-dados.sql mysql-fiap:/tmp
+docker cp scripts-db/banco-dados.sql mysql-fiap:/tmp
 docker cp carrega-base.sh mysql-fiap:/tmp
 docker exec -i mysql-fiap bash  /tmp/carrega-base.sh
 ```
@@ -177,8 +177,15 @@ Payload:
     "quantidade": 100
 }
 ```
+# 5 - Docker Compose
+Você pode executar o projeto inteiro (banco de dados e API) sem precisar do python e ter que criar manualmente a base de dados e tabelas.
 
-# Grupo de Trabalho
+Para isso execute o projeto usando docker compose com o comando abaixo que a base MySql ser criada e populada e a API vai ser carrega em container sem a necessidade de ter o python instalado no seu ambiente
+```
+docker-compose up
+```
+
+# 6 - Grupo de Trabalho
 
 Este trabalho foi realizado em grupo pelos seguintes alunos:
 
