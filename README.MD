@@ -6,7 +6,7 @@
 
 <br>
 
-# Agricultuira Inteligente
+# Agricultura Inteligente
 
 ## Grupo DRELL
 
@@ -56,7 +56,7 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 ## 🔧 Como executar o código
 
-Precisa ser feita em duas etapas, siga a documentação da API Python primeiro, uma vez que ela esteja rodando e com a URL exposta na Internet, você segue a documentaçào do Esp32, reconfigura ele com a sua URL, compila e executa o simulador. 
+Precisa ser feita em duas etapas, siga a documentação da API Python primeiro, uma vez que ela esteja rodando e com a URL exposta na Internet, você segue a documentação do Esp32, reconfigura ele com a sua URL, compila e executa o simulador. 
 
 Todas as instruçòes estào bem documentadas, mas havendo qualquer dificultade abra um Issue para te ajduarmos.
 
