@@ -19,7 +19,8 @@ def lista_sensor(db_config):
         # qualquer erro que ocorrer na execução do código, ele será tratado aqui e retornado como Json para o usuario
         return jsonify({"erro": str(e)}), 500
     finally:
-        conn.close()
+        if conn is not None:
+          conn.close()
 
 # logica para excluir um sensor instalado em um local na base de dados, este sensor nao pode ter sido utilizado em uma coleta
 def excluir_sensor(db_config, codigo):
@@ -36,7 +37,8 @@ def excluir_sensor(db_config, codigo):
         # qualquer erro que ocorrer na execução do código, ele será tratado aqui e retornado como Json para o usuario
         return jsonify({"erro": str(e)}), 500
     finally:
-        conn.close()
+        if conn is not None:
+          conn.close()
 
 
 # logica para  criar no novo sensor em um local de plantacao na base de dados
@@ -62,4 +64,5 @@ def criar_sensor(db_config):
         # qualquer erro que ocorrer na execução do código, ele será tratado aqui e retornado como Json para o usuario
         return jsonify({"erro": str(e)}), 500
     finally:
-        conn.close()
+        if conn is not None:
+          conn.close()

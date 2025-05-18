@@ -19,7 +19,8 @@ def lista_coletas_local(db_config, local):
         # qualquer erro que ocorrer na execução do código, ele será tratado aqui e retornado como Json para o usuario
         return jsonify({"erro": str(e)}), 500
     finally:
-        conn.close()
+        if conn is not None:
+          conn.close()
 
 
 
@@ -47,4 +48,5 @@ def registra_coleta(db_config):
         # qualquer erro que ocorrer na execução do código, ele será tratado aqui e retornado como Json para o usuario
         return jsonify({"erro": str(e)}), 500
     finally:
-        conn.close()
+        if conn is not None:
+          conn.close()

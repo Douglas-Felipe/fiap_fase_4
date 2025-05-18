@@ -19,7 +19,8 @@ def lista_locais(db_config):
         # qualquer erro que ocorrer na execução do código, ele será tratado aqui e retornado como Json para o usuario
         return jsonify({"erro": str(e)}), 500
     finally:
-        conn.close()
+        if conn is not None:
+          conn.close()
 
 # logica para excluir um local na base de dados, este local nao pode ter sido utilizado em uma coleta
 def excluir_local(db_config, codigo):
@@ -36,7 +37,8 @@ def excluir_local(db_config, codigo):
         # qualquer erro que ocorrer na execução do código, ele será tratado aqui e retornado como Json para o usuario
         return jsonify({"erro": str(e)}), 500
     finally:
-        conn.close()
+        if conn is not None:
+          conn.close()
 
 
 # logica para  criar no novo local na base de dados
@@ -61,4 +63,5 @@ def criar_local(db_config):
         # qualquer erro que ocorrer na execução do código, ele será tratado aqui e retornado como Json para o usuario
         return jsonify({"erro": str(e)}), 500
     finally:
-        conn.close()
+        if conn is not None:
+          conn.close()
