@@ -180,7 +180,7 @@ Payload:
 # 5 - Docker Compose
 Você pode executar o projeto inteiro (banco de dados e API) sem precisar do python e ter que criar manualmente a base de dados e tabelas.
 
-Para isso execute o projeto usando docker compose com o comando abaixo que a base MySql ser criada e populada e a API vai ser carrega em container sem a necessidade de ter o python instalado no seu ambiente
+Para isso execute o projeto usando docker compose com o comando abaixo que a base MySql será criada e populada e a API vai ser carregada em container sem a necessidade de ter o python instalado no seu ambiente
 ```
 docker-compose up
 ```
