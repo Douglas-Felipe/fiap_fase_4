@@ -21,7 +21,7 @@ docker run -d --name mysql-fiap -e MYSQL_ROOT_PASSWORD=fiap123 -e MYSQL_DATABASE
 ```
 Este comando vai criar uma pasta mysql_data no diretório onde você estiver rodando o comando, pois caso precise parar e subir o ambiente os dados não se percam
 
-### 2.3 - Crie a estrutura das tabela e carregue os dados iniciais
+### 2.3 - Crie a estrutura das tabelas e carregue os dados iniciais
 Execute o comando abaixo para carregar o script SQL que cria a estrtura das tabelas e faZ a carga inicial de dados
 ```
 docker cp banco-dados.sql mysql-fiap:/tmp
