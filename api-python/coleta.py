@@ -31,8 +31,9 @@ def registra_coleta(db_config):
     valor = dados.get('valor_coletado')
     tipo_indicador = dados.get('tipo_indicador')
 
+
     # verificar se os campos obrigatórios foram informados
-    if not sensor or not valor or not tipo_indicador:
+    if not sensor or valor is None or not tipo_indicador:
         return jsonify({"erro": "Campos obrigatórios: codigo_sensor, valor_coletado, tipo_indicador"}), 400
 
     try:

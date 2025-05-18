@@ -56,6 +56,22 @@ curl http://localhost:5000/local
 ```
 Caso esteja funcionando você verá na tela um resultado parecido com a imagem a seguir: ![Exmplod e consulta de locais](imagens/exemplo_teste.png)
 
+## 3.3 - Expondo a API via internet para ser acessivel pelo ESP32
+Caso você for usar esta API junto com o microprocessador ESP32 para envio de dados de sensores você vai precisar expor a API que esta em execução na sua estação para a internet. 
+
+A maneira mais fácil de fazer isso é com o Cloidflare. Instale ele com o comando a seguir:
+```
+winget install --id Cloudflare.cloudflared
+```
+
+Execute o comando a seguir para export a API para acesso a internet:
+```
+cloudflared tunnel --url http://localhost:5000
+```
+
+O Resultado deste comando gera alguns textos de saida e junto com eles a URL da sua Api. Copie essa URL para você poder usar ela para configurar o seu ESP32.
+![URL na Cloudflare](imagens/cloudflare.png)
+
 # 4 - APIs Disponíveis
 
 ## 4.1 - Locais
