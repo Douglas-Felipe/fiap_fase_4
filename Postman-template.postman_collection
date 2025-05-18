@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "5ab7738c-1d19-425a-b31f-58af99fe4903",
+		"name": "APi-Coleta - FIAP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1104914"
+	},
+	"item": [
+		{
+			"name": "Novo Local",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"nome\": \"Outra plantacao\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/local",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"local"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Locais",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo\": 3,\r\n    \"nome\": \"Plantação Feijão\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/local",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"local"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exclui Local",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo\": 3,\r\n    \"nome\": \"Plantação Feijão\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/local/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"local",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exclui Sensor",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo\": 3,\r\n    \"nome\": \"Plantação Feijão\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/sensor/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sensor",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Sensores",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo\": 3,\r\n    \"nome\": \"Plantação Feijão\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/sensor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sensor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Novo Sensor",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo_local\": 1,\r\n    \"nome\": \"Sensor X\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/sensor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sensor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Produtos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo_local\": 1,\r\n    \"nome\": \"Sensor X\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/produto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"produto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Novo Produto",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"nome\": \"Novo Produto Teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/produto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"produto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exclui Produto",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"nome\": \"Novo Produto Teste\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/produto/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"produto",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registra Aplicacao",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo_local\": 1,\r\n    \"codigo_produto\": 1,\r\n    \"quantidade\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/aplicacao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"aplicacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Aplicacao",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo_local\": 1,\r\n    \"codigo_produto\": 1,\r\n    \"quantidade\": 100\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/aplicacao/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"aplicacao",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registra Coleta",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo_sensor\": 1,\r\n    \"valor_coletado\": 10,\r\n    \"tipo_indicador\": \"Percentual\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/coleta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"coleta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Coleta por Local",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"codigo_sensor\": 1,\r\n    \"valor_coletado\": 10,\r\n    \"tipo_indicador\": \"Percentual\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/coleta/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"coleta",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

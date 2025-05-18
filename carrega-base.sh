@@ -1,0 +1,1 @@
+mysql -uroot -pfiap123 -Dagro < /tmp/banco-dados.sql
