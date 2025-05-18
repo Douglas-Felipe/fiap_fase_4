@@ -39,7 +39,7 @@ A partir desta API usamos um simulador ESP32 para servir de IoT para o nosso pro
 Aqui tem o link da documentação e o código fonte do projeto ESP32 para você executar o simulador.
 [Documentacao ES32](esp32/README.MD)
 
-![Diagrama do projeto ESP32](esp32/imagens/diagrama_esp32.png)
+![Diagrama do projeto ESP32](esp32/ìmagens/diagrama_esp32.png)
 
 
 ## 📁 Estrutura de pastas
