@@ -62,15 +62,15 @@ Caso esteja funcionando você verá na tela um resultado parecido com a imagem a
 As apis expostas na URI /local são responsáveis por permitir listar os locais existentes, incluir novos locais e excluir locais
 
 ### 4.1.1 - Listar Locais
-URL: http://localhost:5000/local
-Header: Content-Type: application/json
-Método: GET
+* URL: http://localhost:5000/local
+* Header: Content-Type: application/json
+* Método: GET
 
 ### 4.1.2 - Incluir um novo Local
-URL:http://localhost:5000/local
-Header: Content-Type: application/json
-Método: POST
-Payload: 
+* URL:http://localhost:5000/local
+* Header: Content-Type: application/json
+* Método: POST
+* Payload: 
 ```
 {
     "nome":"Novo Local de Plantacao"
@@ -78,25 +78,25 @@ Payload:
 ```
 
 ### 4.1.3 - Excluir um Local
-URL: http://localhost:5000/local/{id}
-Header: Content-Type: application/json
-Método: DELETE
-Parmetro na URL: substitua {id} pelo código do local que deseja excluir (exemplo http://localhost:5000/local/2)
-Observação: O local não pode ter nenhum sensor associado a ela e não pode ter recebido aplicação de nenhum produto
+* URL: http://localhost:5000/local/{id}
+* eader: Content-Type: application/json
+* Método: DELETE
+* Parmetro na URL: substitua {id} pelo código do local que deseja excluir (exemplo http://localhost:5000/local/2)
+* Observação: O local não pode ter nenhum sensor associado a ela e não pode ter recebido aplicação de nenhum produto
 
 
 ## 4.2 - Produtos
 
 ### 4.2.1 - Listar Produtos
-URL: http://localhost:5000/produto
-Header: Content-Type: application/json
-Método: GET
+* URL: http://localhost:5000/produto
+* Header: Content-Type: application/json
+* Método: GET
 
 ### 4.2.2 - Incluir um novo Produto
-URL:http://localhost:5000/produto
-Header: Content-Type: application/json
-Método: POST
-Payload: 
+* URL:http://localhost:5000/produto
+* Header: Content-Type: application/json
+* Método: POST
+* Payload: 
 ```
 {
     "nome":"Novo Produto"
@@ -104,24 +104,24 @@ Payload:
 ```
 
 ### 4.2.3 - Excluir um Produto
-URL: http://localhost:5000/produto/{id}
-Header: Content-Type: application/json
-Método: DELETE
-Parmetro na URL: substitua {id} pelo código do produto que deseja excluir (exemplo http://localhost:5000/produto/2)
-Observação: O produto precisa existir e não pode ter sido aplicado em nenhum local de plantação
+* URL: http://localhost:5000/produto/{id}
+* Header: Content-Type: application/json
+* Método: DELETE
+* Parmetro na URL: substitua {id} pelo código do produto que deseja excluir (exemplo http://localhost:5000/produto/2)
+* Observação: O produto precisa existir e não pode ter sido aplicado em nenhum local de plantação
 
 ## 4.3 - Sensores
 
 ### 4.3.1 - Listar Sensores
-URL: http://localhost:5000/sensor
-Header: Content-Type: application/json
-Método: GET
+* URL: http://localhost:5000/sensor
+* Header: Content-Type: application/json
+* Método: GET
 
 ### 4.3.2 - Incluir um novo Sensor
-URL:http://localhost:5000/produto
-Header: Content-Type: application/json
-Método: POST
-Payload: 
+* URL:http://localhost:5000/produto
+* Header: Content-Type: application/json
+* Método: POST
+* Payload: 
 ```
 {
     "codigo_local": 1
@@ -130,25 +130,25 @@ Payload:
 ```
 
 ### 4.3.3 - Excluir um Sensor
-URL: http://localhost:5000/sensor/{id}
-Header: Content-Type: application/json
-Método: DELETE
-Parmetro na URL: substitua {id} pelo código do sensor que deseja excluir (exemplo http://localhost:5000/sensor/2)
-Observação: O Sensor precisa existir e não pode ter sido realizado nenhuma coleta nele
+* URL: http://localhost:5000/sensor/{id}
+* Header: Content-Type: application/json
+* Método: DELETE
+* Parmetro na URL: substitua {id} pelo código do sensor que deseja excluir (exemplo http://localhost:5000/sensor/2)
+* Observação: O Sensor precisa existir e não pode ter sido realizado nenhuma coleta nele
 
 ## 4.4 - Coleta
 
 ### 4.4.1 - Listar Coletas em um Local específico
-URL: http://localhost:5000/coleta/{local}
-Header: Content-Type: application/json
-Método: GET
-Parametro na URL: substitui {local} pelo código do local que deseja listar as coletas realizadas (exemlpo http://localhost:5000/coleta/1)
+* URL: http://localhost:5000/coleta/{local}
+* Header: Content-Type: application/json
+* Método: GET
+* Parametro na URL: substitui {local} pelo código do local que deseja listar as coletas realizadas (exemlpo http://localhost:5000/coleta/1)
 
 ### 4.4.2 - Registrar uma nova coleta para um sensor
-URL:http://localhost:5000/coleta
-Header: Content-Type: application/json
-Método: POST
-Payload: 
+* URL:http://localhost:5000/coleta
+* Header: Content-Type: application/json
+* Método: POST
+* Payload: 
 ```
 { 
     "codigo_sensor": 1,
@@ -160,10 +160,10 @@ Payload:
 ## 4.5 - Aplicação de produtos nos locais de plantação
 
 ### 4.4.1 - Listar Aplicações de produtos realziadas em um Local específico
-URL: http://localhost:5000/aplicacao/{local}
-Header: Content-Type: application/json
-Método: GET
-Parametro na URL: substitui {local} pelo código do local que deseja listar as aplicações de produtos realizadas (exemlpo http://localhost:5000/aplicacao/1)
+* URL: http://localhost:5000/aplicacao/{local}
+* Header: Content-Type: application/json
+* Método: GET
+* Parametro na URL: substitui {local} pelo código do local que deseja listar as aplicações de produtos realizadas (exemlpo http://localhost:5000/aplicacao/1)
 
 ### 4.4.2 - Registrar uma nova aplicação de produto para um local específico
 URL:http://localhost:5000/aplicacao
