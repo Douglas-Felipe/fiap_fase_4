@@ -26,6 +26,8 @@ const int codigoProdutoIrrigacao = 1; // codigo do produto de irrigacao na base 
 DHT dht(DHTPIN, DHTTYPE);
 
 
+// Este métod é usado para emitir alertas atraves do Led, fazendo ele piscar
+// quantas vezes forem necessárias e com velocidade variada
 void geraSinal(int qt, int velocidade) 
   {
     //pisca o led X vezes 
@@ -37,6 +39,9 @@ void geraSinal(int qt, int velocidade)
     }
   } 
 
+
+// metodo que faz a inicialização de todos os camponentes configurando suas portas e fazendo
+// a conexão inicial com o wifi
 void setup() {
     pinMode(botaoFosforo, INPUT_PULLUP);  // Configura o pino do botão como entrada com pull-up interno
     pinMode(botaoPotassio, INPUT_PULLUP);  // Configura o pino do botão como entrada com pull-up interno
@@ -61,17 +66,20 @@ void setup() {
     Serial.println("Conectado ao WiFi!");
 }
 
-// Eata rotina vai ficar em loop rodando a cada 30 segundos coletando os dados dos sensores
+// Eata rotina vai ficar em loop rodando a cada 15 segundos coletando os dados dos sensores
 // e enviando para o servidor
 void loop() {
     
     geraSinal(2, 400);  // Pisca o LED 2 vezes para indicar que está coletando dados
-    //verifica se o botão de fosforo foi pressionado
+    
+    //verifica se o botão de fosforo está pressionado
     int estadoBotaoFosforo = digitalRead(botaoFosforo);  // Lê o estado do botão de fosforo
+    
+    // verifica se o botao de potassio está pressionado
     int estadoBotaoPotassio = digitalRead(botaoPotassio);  // Lê o estado do botão de potassio
 
 
-    // Simulação de leitura dos sensores
+    // Realiza a leitura dos sensores
     int umidade = dht.readHumidity();  // Lê a umidade do sensor DHT
     int pH = analogRead(ldrPin);     // Lê o valor do LDR 
     int fosforo = 0;
@@ -85,7 +93,7 @@ void loop() {
 
     Serial.println("Vai enviar os dados para o servidor");
     // Envia os dados para o servidor  
-    registraColeta(umidade, pH, fosforo, potassio);  // Chama a função para registrar a coleta
+    registraColeta(umidade, pH, fosforo, potassio);  // Chama a função para registrar a coleta via API Python
 
     if (umidade < 30) {  // Se a umidade estiver abaixo de 30%
         Serial.println("Umidade baixa!");  // Imprime mensagem de umidade baixa
@@ -101,6 +109,9 @@ void loop() {
     delay(15000);  // aguarda 15 segundos antes de coletar novamente
 }
 
+
+// metodo responsavel por invocar a API Python para registrar indivisualmente os dados
+// coletados de cada um dos 4 sensores
 void registraColeta(int umidade, int pH, int fosforo, int potassio)
 {
     Serial.println("");
@@ -111,11 +122,16 @@ void registraColeta(int umidade, int pH, int fosforo, int potassio)
     
     invocaAPIColeta(pH, sensorPH, "pH");
     invocaAPIColeta(umidade, sensorUmidade, "Percentual");
-    invocaAPIColeta(fosforo, sensorFosforo, "0-100");
-    invocaAPIColeta(potassio, sensorPotassio, "0-100");    
+    invocaAPIColeta(fosforo, sensorFosforo, "booleano");
+    invocaAPIColeta(potassio, sensorPotassio, "booleano");    
 
 }
 
+
+// metodo responsavel por registrar que um determinado produto foi 
+// aplicado ao local de cultivbo em resposta a algum indicador coletado pelos
+// senshores, neste caso de uso em especial estamos registrando o inicio do processo
+// de irrigação
 void invocaAPIAplicacao(int local, int produto, int quantidade)
 {
     Serial.println("Registrando dados da aplicação de produtos no solo...");
@@ -140,7 +156,9 @@ void invocaAPIAplicacao(int local, int produto, int quantidade)
     http.end();  // Finaliza a conexão
 }
 
-
+// metodo responsavel por chamar a API Python para registrar em banco de dados
+// os dados coletados dos sensores, estes dados ficaram disponiveis para 
+// futura analise da correlação destas diferentes métricas com o resultado da colheita 
 void invocaAPIColeta(int valorColetado, int codigoSensor, String tipoIndicador)
 {
     WiFiClientSecure client;
