@@ -62,7 +62,7 @@ Todas as instruçòes estào bem documentadas, mas havendo qualquer dificultade 
 
 ## Demmonstração da solução funcionando
 
-[![Assista ao vídeo](https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg)](https://www.youtube.com/watch?v=It2_9pf46x4)
+[![Assista ao vídeo](assets/logo-youtube.png)](https://www.youtube.com/watch?v=It2_9pf46x4)
 
 
 
