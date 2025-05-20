@@ -14,7 +14,7 @@
 const char* ssid = "Wokwi-GUEST";  // Substitua pelo seu SSID da sua rede Wi-Fi (quando rodar em dispositivo fisico)
 const char* password = "";  // Substitua pela sua senha da rede Wi-Fi (quando rodar em dispositivo fisico)
 
-const char* urlApi = "https://resident-pencil-nasty-advertiser.trycloudflare.com/"; // URL do servidor rodando via clloudflare 
+const char* urlApi = "https://merely-blue-young-submit.trycloudflare.com/"; // URL do servidor rodando via clloudflare 
 
 const int sensorFosforo = 1; // codigo do sensor de fosforo (P) na base de dados segundo script de carga inicial
 const int sensorPotassio = 2; // codigo do sensor de Potassio (K) na base de dados segundo script de carga inicial
