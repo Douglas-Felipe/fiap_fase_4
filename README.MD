@@ -60,7 +60,7 @@ Precisa ser feita em duas etapas, siga a documentação da API Python primeiro, 
 
 Todas as instruçòes estào bem documentadas, mas havendo qualquer dificultade abra um Issue para te ajduarmos.
 
-## Demmonstração da solução funcionando
+## Demonstração da solução funcionando
 
 [![Assista ao vídeo](assets/logo-youtube.png)](https://www.youtube.com/watch?v=It2_9pf46x4)
 
