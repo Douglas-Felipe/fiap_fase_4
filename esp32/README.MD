@@ -6,7 +6,7 @@ Este módulo contem os dados do projeto que simula usando Wokwi um microprocessa
 
 Quando a umidade do solo é avalida pelo senor menor do que 30% ele ativa um Rele que simula uma irrigação, tão logo uma próxima coleta identifique que a umidade esta superior ou igual a 30% este relé é desativado.
 
-![Diagrama do projeto](,/imagens/diagrama_esp32.png)
+![Diagrama do projeto](./imagens/diagrama_esp32.png)
 
 ## 2 - Setup do ambiente
 
@@ -55,11 +55,11 @@ Durante a execução do simulador, você interagir com os 4 sensores:
 ### 3.4 - Monitoramento via SerialPlotter
 Foi utilizado SerialPlotter para fazer o monitoramento em tempo real da umidade e do PH
 
-![Serial Plotter](./ìmagens/serialplotter.png)
+![Serial Plotter](./imagens/serialplotter.png)
 
 Também foi adicionado um display LCD para verificar essas variaveis no proprio ESP32
 
-![Monitor LCD](./ìmagens/monitor-lcd.png)
+![Monitor LCD](./imagens/monitor-lcd.png)
 
 ## 4 - Mudanças feitas:
 - Adicionado novo componente no ESP32 sendo ele o displayLCD
