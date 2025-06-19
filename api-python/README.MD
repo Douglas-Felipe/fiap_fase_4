@@ -21,13 +21,16 @@ docker run -d --name mysql-fiap -e MYSQL_ROOT_PASSWORD=fiap123 -e MYSQL_DATABASE
 ```
 Este comando vai criar uma pasta mysql_data no diretório onde você estiver rodando o comando, pois caso precise parar e subir o ambiente os dados não se percam
 
-### 2.3 - Crie a estrutura das tabelas e carregue os dados iniciais
+### 2.3.1 - Crie a estrutura das tabelas e carregue os dados iniciais
 Execute o comando abaixo para carregar o script SQL que cria a estrtura das tabelas e faZ a carga inicial de dados
 ```
 docker cp scripts-db/banco-dados.sql mysql-fiap:/tmp
 docker cp carrega-base.sh mysql-fiap:/tmp
 docker exec -i mysql-fiap bash  /tmp/carrega-base.sh
 ```
+
+#### 2.3.2 - Populando tabela com dados ficticios para treinamento do modelo e visualização gráfica
+Execute o arquivo `./scripts-db/populate.py` após ter criado e carregado os dados iniciais para popular o banco com informações ficticias para treinamento do modelo
 
 ### 2.4 - Instale as dependencias do python
 Execute o comando abaixo para instalar as bibliotecas necessárias para a API funcionar
@@ -193,7 +196,22 @@ Payload:
     "quantidade": 100
 }
 ```
-# 5 - Docker Compose
+
+# 5 - Modelo de previsão
+Foi criado um modelo de floresta aleatória cujo o objetivo é analisar os dados atuais de ph e humidade e prever qual produto deve ser utilizado na cutura(Irrigação, Adubo)
+Para mais detalhes: [Modelo](./scikit-learn/previsao_aplicacao_agricola.ipynb)
+
+# 6 - Visualização das coletas
+Foi criar uma interface gráfica utilizando StreamLit para realizar a visualização das coletas. 
+Para rodar:
+```
+cd streamlit
+streamlit run ./app.py
+```
+Nele é possível ver a variação da humidade e do ph em um gráfico de linhas e realizar um filtro por data
+![interface](./imagens/streamlit.png)
+
+# 7 - Docker Compose
 Você pode executar o projeto inteiro (banco de dados e API) sem precisar do python e ter que criar manualmente a base de dados e tabelas.
 
 Para isso execute o projeto usando docker compose com o comando abaixo que a base MySql será criada e populada e a API vai ser carregada em container sem a necessidade de ter o python instalado no seu ambiente
@@ -201,7 +219,7 @@ Para isso execute o projeto usando docker compose com o comando abaixo que a bas
 docker-compose up
 ```
 
-# 6 - Grupo de Trabalho
+# 8 - Grupo de Trabalho
 
 Este trabalho foi realizado em grupo pelos seguintes alunos:
 

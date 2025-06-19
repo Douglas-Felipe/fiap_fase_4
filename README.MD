@@ -39,7 +39,7 @@ A partir desta API usamos um simulador ESP32 para servir de IoT para o nosso pro
 Aqui tem o link da documentação e o código fonte do projeto ESP32 para você executar o simulador.
 [Documentacao ES32](esp32/README.MD)
 
-![Diagrama do projeto ESP32](esp32/ìmagens/diagrama_esp32.png)
+![Diagrama do projeto ESP32](esp32/ìmagens/monitor-lcd.png)
 
 
 ## 📁 Estrutura de pastas
@@ -62,7 +62,9 @@ Todas as instruçòes estào bem documentadas, mas havendo qualquer dificultade 
 
 ## Demonstração da solução funcionando
 
-[![Assista ao vídeo](assets/logo-youtube.png)](https://www.youtube.com/watch?v=It2_9pf46x4)
+[Entrega 0.1.0](https://www.youtube.com/watch?v=It2_9pf46x4)
+
+[Entrega 0.2.0](https://youtu.be/syZCVDUYr8E)
 
 
 
@@ -73,6 +75,21 @@ Todas as instruçòes estào bem documentadas, mas havendo qualquer dificultade 
         * API que armazena e permite a consulta de todos os dados para futura analise
         * simulador que conecta a esta API para enviar dados coletados
         * simulador ainda preve uma automação via relé para simular a ativação de sistema de irrigação
+
+* 0.2.0 - 20/06/2025
+    * Atualização do projeto com novas implementações
+        * ESP32:
+            * Adicionado Monitor LCD -> umidade e pH
+            * Exibindo umidade e pH no serialPlotter
+            * Otimização na coleta de pH -> Convertendo o valor do sensor para um valor entre 0 a 14
+        * Python
+            * DB
+                * Novo scripts para popular banco de dados com informações ficticias no período de 1 ano
+            * Streamlit
+                * Implementação do streamlit para visualizar as coletas de forma gráfica
+            * Modelo de ML
+                * Implementação de um Modelo de Floresta aleatória para prever qual produto utilizar com base na coleta atual
+            
 
 
 ## 📋 Licença

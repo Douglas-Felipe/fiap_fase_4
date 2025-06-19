@@ -2,8 +2,10 @@
 #include <HTTPClient.h>
 #include <WiFiClientSecure.h>
 #include <DHT.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
 
-#define botaoFosforo 22  // Pino GPIO conectado ao push button que simula o sensor de presença de fosforo
+#define botaoFosforo 19  // Pino GPIO conectado ao push button que simula o sensor de presença de fosforo
 #define botaoPotassio 23 // Pino GPIO conectado ao push button que simula o sensor de presença de potassio
 #define ledPin 17      // Pino GPIO conectado ao LED 
 #define ldrPin 34      // Pino GPIO conectado ao LDR 
@@ -14,7 +16,7 @@
 const char* ssid = "Wokwi-GUEST";  // Substitua pelo seu SSID da sua rede Wi-Fi (quando rodar em dispositivo fisico)
 const char* password = "";  // Substitua pela sua senha da rede Wi-Fi (quando rodar em dispositivo fisico)
 
-const char* urlApi = "https://merely-blue-young-submit.trycloudflare.com/"; // URL do servidor rodando via clloudflare 
+const char* urlApi = "https://weekend-faster-shore-output.trycloudflare.com/"; // URL do servidor rodando via clloudflare 
 
 const int sensorFosforo = 1; // codigo do sensor de fosforo (P) na base de dados segundo script de carga inicial
 const int sensorPotassio = 2; // codigo do sensor de Potassio (K) na base de dados segundo script de carga inicial
@@ -23,6 +25,7 @@ const int sensorUmidade = 4; // codigo do sensor de Umidade na base de dados seg
 const int codigoLocal = 1; // codigo do local na base de dados segundo script de carga inicial
 const int codigoProdutoIrrigacao = 1; // codigo do produto de irrigacao na base de dados segundo script de carga inicial
 
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 DHT dht(DHTPIN, DHTTYPE);
 
 
@@ -64,6 +67,12 @@ void setup() {
     
 
     Serial.println("Conectado ao WiFi!");
+
+    // iniciando LCD
+    lcd.init();            
+    lcd.backlight();      
+    lcd.setCursor(0, 0);
+    lcd.print("Sistema Pronto!");
 }
 
 // Eata rotina vai ficar em loop rodando a cada 15 segundos coletando os dados dos sensores
@@ -89,7 +98,23 @@ void loop() {
     int potassio = 0;
     if (estadoBotaoPotassio == LOW) {  // Se o botão de potassio for pressionado
         potassio = 1;                  // Simula a presença de potassio
-    }   
+    }
+
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Umid: ");
+    lcd.print(umidade);
+    lcd.print("%");
+
+    lcd.setCursor(0, 1);
+    lcd.print("pH: ");
+    lcd.print(converteParaPH(pH), 1); // Mostra pH com 1 casa decimal
+
+    Serial.println("Umid: ");
+    Serial.println(umidade);
+
+    Serial.println("pH: ");
+    Serial.println(converteParaPH(pH), 1);
 
     Serial.println("Vai enviar os dados para o servidor");
     // Envia os dados para o servidor  
@@ -109,18 +134,25 @@ void loop() {
     delay(15000);  // aguarda 15 segundos antes de coletar novamente
 }
 
+// Criando método para converter a escala do sensor LDR para a escala do PH que é de 0 a 14
+float converteParaPH(int leituraSensor)
+{
+    return (float)leituraSensor * 14.0 / 4095.0;
+}
 
 // metodo responsavel por invocar a API Python para registrar indivisualmente os dados
 // coletados de cada um dos 4 sensores
 void registraColeta(int umidade, int pH, int fosforo, int potassio)
 {
+    float pHConvertido = converteParaPH(pH);
+
     Serial.println("");
     Serial.println("umidade: " + String(umidade));
-    Serial.println("pH: " + String(pH));
+    Serial.println("pH: " + String(pHConvertido));
     Serial.println("fosforo: " + String(fosforo));  
     Serial.println("potassio: " + String(potassio));
     
-    invocaAPIColeta(pH, sensorPH, "pH");
+    invocaAPIColeta(pHConvertido, sensorPH, "pH");
     invocaAPIColeta(umidade, sensorUmidade, "Percentual");
     invocaAPIColeta(fosforo, sensorFosforo, "booleano");
     invocaAPIColeta(potassio, sensorPotassio, "booleano");    

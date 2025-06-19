@@ -6,7 +6,7 @@ Este módulo contem os dados do projeto que simula usando Wokwi um microprocessa
 
 Quando a umidade do solo é avalida pelo senor menor do que 30% ele ativa um Rele que simula uma irrigação, tão logo uma próxima coleta identifique que a umidade esta superior ou igual a 30% este relé é desativado.
 
-![Diagrama do projeto](imagens/diagrama_esp32.png)
+![Diagrama do projeto](,/imagens/diagrama_esp32.png)
 
 ## 2 - Setup do ambiente
 
@@ -21,13 +21,13 @@ Conforme explicado em aula, instale os seguintes plugins para que este projeto f
 ### 2.2 - Reconfigurando a URL da API
 
 Uma ves que você tem sua API rodando e exposta na internet, conforme item 3.3 da documentação da API, precisamos informar esta URL no código.
-Edite o arquivo [Programa ESP32](src/prog1.ino) e na linha 17 substitua o valor https://<minha-url-cloudfare>/ pela sua URL gerada na cloudflare. Não esqueça de finalizar a url com "/" como no exemplo que lá está. ![Imagem do codigo fonte](imagens/url_nova.png)
+Edite o arquivo [Programa ESP32](./src/prog1.ino) e na linha 17 substitua o valor https://<minha-url-cloudfare>/ pela sua URL gerada na cloudflare. Não esqueça de finalizar a url com "/" como no exemplo que lá está. ![Imagem do codigo fonte](./imagens/url_nova.png)
 
 ### 2.3 - Compile o programa
 
 Uma vez o programa tendo ajustado, vamos compilar ele. Na lateral esquerda do Visual Studio Code, procre pelo ícone do PlatformIO, clique nele, e escolha a opção "build" e aguarde seu código ser compilado
 
-![Build do projeto ESP32](imagens/esp_build.png)
+![Build do projeto ESP32](./imagens/esp_build.png)
 
 ## 3 - Executando o projeto
 
@@ -35,7 +35,7 @@ Uma vez o programa tendo ajustado, vamos compilar ele. Na lateral esquerda do Vi
 
 Clique no Visual Studio no menu esquerdo no ícone que representa a palheta de arquivos e selecione o arquivo diagram.json.
 Ele deve abrir como a imagem a seguir. Para executá-lo clique no sinal de Play.
-![Simulacao do projeto](imagens/esp32_simulacao.png)
+![Simulacao do projeto](./imagens/esp32_simulacao.png)
 
 ### 3.2 - Sinais no Led Principal
 
@@ -52,7 +52,23 @@ Durante a execução do simulador, você interagir com os 4 sensores:
 * Botão Amarelo -> Se estiver pressionado durante a coleta simula a presença de Fósforo no solo
 * LDR -> É um sensor de luminosidade que aqui simula valores para pH
 
-# 4 - Grupo de Trabalho
+### 3.4 - Monitoramento via SerialPlotter
+Foi utilizado SerialPlotter para fazer o monitoramento em tempo real da umidade e do PH
+
+![Serial Plotter](./ìmagens/serialplotter.png)
+
+Também foi adicionado um display LCD para verificar essas variaveis no proprio ESP32
+
+![Monitor LCD](./ìmagens/monitor-lcd.png)
+
+## 4 - Mudanças feitas:
+- Adicionado novo componente no ESP32 sendo ele o displayLCD
+- Feita lógica para implementar e Exibir os dados das variaveis no LCD através do código c/c++
+- Otimização da forma como o PH era coletado
+  - Convertendo o valor para um numéro entre 0 e 14 para melhor representar a simulação do PH vindo do sensor de luminosidade
+
+
+## 5 - Grupo de Trabalho
 
 Este trabalho foi realizado em grupo pelos seguintes alunos:
 

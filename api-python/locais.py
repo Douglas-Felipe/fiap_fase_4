@@ -4,7 +4,7 @@ import pymysql
 
 # logica para listar os locais de plantação na base de dados
 def lista_locais(db_config):
-
+    conn = None
     try:
         # se conecta com a base de dadops
         conn = pymysql.connect(**db_config)
@@ -19,11 +19,12 @@ def lista_locais(db_config):
         # qualquer erro que ocorrer na execução do código, ele será tratado aqui e retornado como Json para o usuario
         return jsonify({"erro": str(e)}), 500
     finally:
-        if conn is not None:
-          conn.close()
+        if conn:
+            conn.close()
 
 # logica para excluir um local na base de dados, este local nao pode ter sido utilizado em uma coleta
 def excluir_local(db_config, codigo):
+    conn = None
     try:
         # se conecta com a base de dados
         conn = pymysql.connect(**db_config)
@@ -38,13 +39,14 @@ def excluir_local(db_config, codigo):
         return jsonify({"erro": str(e)}), 500
     finally:
         if conn is not None:
-          conn.close()
+            conn.close()
 
 
 # logica para  criar no novo local na base de dados
 def criar_local(db_config):
     dados = request.get_json()
     nome = dados.get('nome')
+    conn = None
 
     # verificar se o nome do local foi informado 
     if not nome :
@@ -64,4 +66,4 @@ def criar_local(db_config):
         return jsonify({"erro": str(e)}), 500
     finally:
         if conn is not None:
-          conn.close()
+            conn.close()
